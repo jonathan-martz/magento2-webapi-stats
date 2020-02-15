@@ -1,0 +1,21 @@
+{
+    "name": "jonathan-martz/webapi-stats",
+    "description": "Stats for Magento2 Web Api",
+    "authors":[{
+        "name": "Jonathan Martz",
+        "homepage": "https://www.jmartz.de"
+    }],
+    "require": {
+        "magento/module-webapi": ">=100.0.2"
+    },
+    "type": "magento2-module",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "JonathanMartz\\WebApiStats\\": ""
+        }
+    }
+}
