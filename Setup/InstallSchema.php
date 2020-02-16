@@ -67,11 +67,11 @@ class InstallSchema implements InstallSchemaInterface
                 );
 
                 $table->addColumn(
-                    'url',
+                    'ip',
                     Table::TYPE_TEXT,
                     255,
                     ['nullable' => false, 'default' => ''],
-                    'Message'
+                    'Ip'
                 );
 
                 $connection->createTable($table);
