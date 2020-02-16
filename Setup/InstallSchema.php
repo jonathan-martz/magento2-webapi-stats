@@ -12,10 +12,21 @@ use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Zend_Db_Exception;
 
+/**
+ * Class InstallSchema
+ * @package JonathanMartz\WebApiStats\Setup
+ */
 class InstallSchema implements InstallSchemaInterface
 {
+    /**
+     * @var string
+     */
     public $table = 'webapi_stats_request';
 
+    /**
+     * @param SchemaSetupInterface $setup
+     * @param ModuleContextInterface $context
+     */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $connection = $setup->getConnection();

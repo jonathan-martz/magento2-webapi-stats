@@ -10,10 +10,20 @@ use Magento\Framework\UrlInterface;
 use Magento\Webapi\Controller\Rest;
 use Psr\Log\LoggerInterface;
 
+/**
+ * Class Api
+ * @package JonathanMartz\WebApiStats\Plugin\Rest
+ */
 class Api
 {
+    /**
+     * @var LoggerInterface
+     */
     protected $logger;
 
+    /**
+     * @var RequestFactory
+     */
     protected $webapistats;
 
     /**
@@ -29,6 +39,14 @@ class Api
      */
     private $customerSession;
 
+    /**
+     * Api constructor.
+     * @param LoggerInterface $logger
+     * @param UrlInterface $url
+     * @param RemoteAddress $remote
+     * @param Session $customerSession
+     * @param RequestFactory $webapistats
+     */
     public function __construct(
         LoggerInterface $logger,
         UrlInterface $url,
@@ -43,6 +61,12 @@ class Api
         $this->webapistats = $webapistats;
     }
 
+    /**
+     * @param Rest $subject
+     * @param callable $proceed
+     * @param RequestInterface $request
+     * @return mixed
+     */
     public function aroundDispatch(
         Rest $subject,
         callable $proceed,
