@@ -5,7 +5,6 @@ namespace JonathanMartz\WebApiStats\Plugin\Rest;
 use JonathanMartz\WebApiStats\Model\RequestFactory;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\UrlInterface;
 use Magento\Webapi\Controller\Rest;

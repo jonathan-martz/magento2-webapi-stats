@@ -1,5 +1,5 @@
 <?php
-namespace JonathanMartz\WebApiStats\Model\ResourceModel\DataExample;
+namespace JonathanMartz\WebApiStats\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
