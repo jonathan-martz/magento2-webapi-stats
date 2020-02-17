@@ -77,10 +77,11 @@ class InstallSchema implements InstallSchemaInterface
                 $connection->createTable($table);
             }
             catch(Zend_Db_Exception $e) {
+                die('test');
             }
         }
         else {
-            $connection->dropTable($this->table);
+            // $connection->dropTable($this->table);
         }
     }
 }

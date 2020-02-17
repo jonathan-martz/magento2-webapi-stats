@@ -1,0 +1,41 @@
+<p>Hello World!</p>
+
+<?php
+// var_dump($block->getBackgroundColor());
+?>
+
+<p>
+    <canvas id="myChart"></canvas>
+</p>
+
+<script>
+    requirejs(['jquery', 'chartjs'], function($, chart){
+        let ctx = document.getElementById('myChart').getContext('2d');
+        let myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?= $block->getStats('standard') ?>,
+                datasets: [
+                    {
+                        label: '# of Votes',
+                        data: <?= $block->getStats('standard') ?>,
+                        backgroundColor: <?= $block->getBackgroundColors(10) ?>,
+                        borderColor: <?= $block->getBorderColors(10) ?>,
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [
+                        {
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+    });
+</script>

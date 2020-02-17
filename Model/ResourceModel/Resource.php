@@ -14,7 +14,7 @@ class Resource extends AbstractDb
      */
     public function _construct()
     {
-        $this->_init("web_api_stats", "id");
+        $this->_init("webapi_stats_request", "id");
     }
 }
 

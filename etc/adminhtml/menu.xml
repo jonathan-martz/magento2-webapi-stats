@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="JonathanMartz_WebApiStats::dashboard" title="WebApi" translate="title"
+             module="JonathanMartz_WebApiStats" parent="Magento_Backend::content" sortOrder="50"
+             dependsOnModule="JonathanMartz_WebApiStats" resource="JonathanMartz_WebApiStats::dashboard"/>
+        <add id="JonathanMartz_WebApiStats::stats" title="Stats" translate="title"
+             module="JonathanMartz_WebApiStats" parent="JonathanMartz_WebApiStats::dashboard" sortOrder="10"
+             dependsOnModule="JonathanMartz_WebApiStats" action="webapistats/stats"
+             resource="JonathanMartz_WebApiStats::stats"/>
+    </menu>
+</config>
