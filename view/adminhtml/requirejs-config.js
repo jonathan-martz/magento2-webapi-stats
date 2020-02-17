@@ -5,6 +5,6 @@ var config = {
     shim: {
         'chartjs': {
             deps: ['jquery']
-        }
+        },
     }
 };

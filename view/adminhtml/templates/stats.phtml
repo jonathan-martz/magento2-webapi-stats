@@ -1,38 +1,46 @@
-<p><strong>Hallo Welt</strong></p>
-<p>Hello World!</p>
-<p>
-    <canvas id="myChart" height="200"></canvas>
-</p>
-<hr>
+<div class="container" style="max-width:100%;">
+    <div class="row">
+        <div class="col-12">
+            <p><strong>Hallo Welt</strong></p>
+            <p>Hello World!</p>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="max-width:100%;">
+    <div class="row">
+        <div class="col-6">
+            <canvas id="myChart1"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="myChart2"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="max-width:100%;">
+    <div class="row">
+        <div class="col-6">
+            <canvas id="myChart3"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="myChart4"></canvas>
+        </div>
+    </div>
+</div>
 
 <script>
     requirejs(['jquery', 'chartjs'], function($, chart){
-        let ctx = document.getElementById('myChart').getContext('2d');
-        let myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: <?= $block->getLabels('standard') ?>,
-                datasets: [
-                    {
-                        label: '# of Requests',
-                        data: <?= $block->getStats('standard') ?>,
-                        backgroundColor: <?= $block->getBackgroundColors(10) ?>,
-                        borderColor: <?= $block->getBorderColors(10) ?>,
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    yAxes: [
-                        {
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }
-                    ]
-                }
-            }
-        });
+        let canvas1 = document.getElementById('myChart1').getContext('2d');
+        let chart1 = new Chart(canvas1, <?= $block->getChart('standard'); ?>);
+
+        let canvas2 = document.getElementById('myChart2').getContext('2d');
+        let chart2 = new Chart(canvas2, <?= $block->getChart('standard'); ?>);
+
+        let canvas3 = document.getElementById('myChart3').getContext('2d');
+        let chart3 = new Chart(canvas3, <?= $block->getChart('standard'); ?>);
+
+        let canvas4 = document.getElementById('myChart4').getContext('2d');
+        let chart4 = new Chart(canvas4, <?= $block->getChart('standard'); ?>);
     });
 </script>
