@@ -9,6 +9,7 @@ use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\UrlInterface;
 use Magento\Webapi\Controller\Rest;
 use Psr\Log\LoggerInterface;
+use function json_encode;
 
 /**
  * Class Api
@@ -71,31 +72,25 @@ class Api
         Rest $subject,
         callable $proceed,
         RequestInterface $request
-    ) {
-        var_dump('hallo');
-
-        $url = str_replace($this->url->getBaseUrl(), '', $this->url->getCurrentUrl());
+    )
+    {
+        $url = str_replace([$this->url->getBaseUrl(), 'rest/V1/'], ['', ''], $this->url->getCurrentUrl());
         $loggedIn = $this->customerSession->isLoggedIn();
         $id = $this->customerSession->getSessionId();
         $ip = $this->remote->getRemoteAddress();
 
-        // var_dump($url);
-        // var_dump($loggedIn);
-        // var_dump($id);
-        // var_dump($ip);
-
-        if(false) {
-            $model = $this->webapistats->create();
-            $model->addData([
-                "title" => 'Title 01',
-                "content" => 'Content 01',
-                "status" => true,
-                "sort_order" => 1
-            ]);
-            $saveData = $model->save();
-            if($saveData) {
-                // erfolgreich
-            }
+        $model = $this->webapistats->create();
+        $data = [
+            'url' => $url,
+            'loggedin' => (int)$loggedIn,
+            'session' => $id,
+            'ip' => sha1($ip),
+            'time' => time()
+        ];
+        $model->addData($data);
+        $saveData = $model->save();
+        if(!$saveData) {
+            $this->logger->alert('Cant add Request: ' . json_encode($data));
         }
 
         die('Konalo');

@@ -1,12 +1,9 @@
+<p><strong>Hallo Welt</strong></p>
 <p>Hello World!</p>
-
-<?php
-// var_dump($block->getBackgroundColor());
-?>
-
 <p>
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart" height="200"></canvas>
 </p>
+<hr>
 
 <script>
     requirejs(['jquery', 'chartjs'], function($, chart){
@@ -14,10 +11,10 @@
         let myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: <?= $block->getStats('standard') ?>,
+                labels: <?= $block->getLabels('standard') ?>,
                 datasets: [
                     {
-                        label: '# of Votes',
+                        label: '# of Requests',
                         data: <?= $block->getStats('standard') ?>,
                         backgroundColor: <?= $block->getBackgroundColors(10) ?>,
                         borderColor: <?= $block->getBorderColors(10) ?>,

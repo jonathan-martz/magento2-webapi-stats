@@ -31,15 +31,50 @@ class Chart extends Template
     public
     function collectStats()
     {
-        $this->stats['standard'][] = 12;
-        $this->labels['standard'][] = 'test';
+        $this->loadStats('standard');
+    }
 
+    public function loadStats(string $name): void
+    {
+        // @todo merge them together
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+
+        $this->stats['standard'][] = $this->loadStatistic('customers');
+        $this->labels['standard'][] = '"Customers"';
+    }
+
+    public function loadStatistic(string $name)
+    {
         $collection = $this->collectionFactory->create();
 
-        var_dump(get_class($collection));
-        var_dump(count($collection->getData()));
+        $collection->addFieldToFilter('url', ['eq' => $name]);
 
-        var_dump('test');
+        return count($collection->getData());
     }
 
 

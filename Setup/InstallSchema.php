@@ -74,10 +74,18 @@ class InstallSchema implements InstallSchemaInterface
                     'Ip'
                 );
 
+                $table->addColumn(
+                    'time',
+                    Table::TYPE_INTEGER,
+                    30,
+                    ['nullable' => false, 'default' => time()],
+                    'Time'
+                );
+
                 $connection->createTable($table);
             }
             catch(Zend_Db_Exception $e) {
-                die('test');
+                die($e->getMessage());
             }
         }
         else {

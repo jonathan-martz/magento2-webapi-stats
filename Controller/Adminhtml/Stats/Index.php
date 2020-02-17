@@ -41,5 +41,4 @@ class Index extends Action
         return $resultPage = $this->resultPageFactory->create();
     }
 }
-
 ?>
