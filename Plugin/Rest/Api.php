@@ -72,8 +72,7 @@ class Api
         Rest $subject,
         callable $proceed,
         RequestInterface $request
-    )
-    {
+    ) {
         $url = str_replace([$this->url->getBaseUrl(), 'rest/V1/'], ['', ''], $this->url->getCurrentUrl());
         $loggedIn = $this->customerSession->isLoggedIn();
         $id = $this->customerSession->getSessionId();
