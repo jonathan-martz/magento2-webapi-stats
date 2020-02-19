@@ -11,7 +11,6 @@ use Magento\Backend\Block\Template;
  */
 class Chart extends Template
 {
-
     /**
      * @var array
      */
@@ -54,6 +53,57 @@ class Chart extends Template
     }
 
     /**
+     *
+     */
+    public function collectStats(): void
+    {
+        $this->loadStats('standard');
+    }
+
+    /**
+     * @param string $name
+     */
+    public function loadStats(string $name): void
+    {
+        $this->loadPageStandard();
+    }
+
+    /**
+     *
+     */
+    public function loadPageStandard()
+    {
+        for($i = 0; $i < 10; $i++) {
+            $this->stats['standard'][] = $this->loadStatistic('customers');
+            $this->labels['standard'][] = '"' . $this->convertStatisticName('customers') . '"';
+        }
+    }
+
+    /**
+     * @param string $name
+     * @return int
+     */
+    public function loadStatistic(string $name)
+    {
+        $collection = $this->collectionFactory->create();
+        $collection->addFieldToFilter('url', ['eq' => $name]);
+        return count($collection->getData());
+    }
+
+    /**
+     * @param string $name
+     * @return string
+     */
+    public function convertStatisticName(string $name): string
+    {
+        if(!empty($this->names[$name])) {
+            return $this->names[$name];
+        }
+
+        return $name;
+    }
+
+    /**
      * @param int $page
      * @return string
      */
@@ -93,57 +143,6 @@ class Chart extends Template
                 }
             }
         }';
-    }
-
-    /**
-     *
-     */
-    public function collectStats(): void
-    {
-        $this->loadStats('standard');
-    }
-
-    /**
-     * @param string $name
-     */
-    public function loadStats(string $name): void
-    {
-        $this->loadPageStandard();
-    }
-
-    /**
-     *
-     */
-    public function loadPageStandard()
-    {
-        for($i = 0; $i < 10; $i++) {
-            $this->stats['standard'][] = $this->loadStatistic('customers');
-            $this->labels['standard'][] = '"' . $this->convertStatisticName('customers') . '"';
-        }
-    }
-
-    /**
-     * @param string $name
-     * @return string
-     */
-    public function convertStatisticName(string $name): string
-    {
-        if(!empty($this->names[$name])) {
-            return $this->names[$name];
-        }
-
-        return $name;
-    }
-
-    /**
-     * @param string $name
-     * @return int
-     */
-    public function loadStatistic(string $name)
-    {
-        $collection = $this->collectionFactory->create();
-        $collection->addFieldToFilter('url', ['eq' => $name]);
-        return count($collection->getData());
     }
 
     /**
