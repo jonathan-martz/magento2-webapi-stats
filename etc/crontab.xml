@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
         <job instance="JonathanMartz\WebApiStats\Cron\Test" method="execute" name="webapi_stats_clear">
-            <schedule>@daily</schedule>
+            <schedule>* 0 * * *</schedule>
         </job>
     </group>
 </config>
