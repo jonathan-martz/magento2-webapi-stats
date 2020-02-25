@@ -2,7 +2,7 @@
 
 namespace JonathanMartz\WebApiStats\Block;
 
-use JonathanMartz\WebApiStats\Model\ResourceModel\CollectionFactory;
+use JonathanMartz\WebApiLog\Model\ResourceModel\CollectionFactory;
 use Magento\Backend\Block\Template;
 
 /**
