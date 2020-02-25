@@ -12,10 +12,6 @@ use Magento\Backend\Block\Template;
 class Chart extends Template
 {
     /**
-     * @todo fix model usage use webapi log!!!
-     */
-
-    /**
      * @var array
      */
     public $stats = [
